@@ -1,0 +1,25 @@
+{:tasks
+ {init {:doc "Bootstrap the project"
+        :task (do
+                (shell "clj -A:dev -P"))}
+
+  aot {:doc "AOT compile the project"
+       :task
+       (let [command '(do
+                        (compile 'rama-space.extract)
+                        (compile 'rama-space.view)
+                        (compile 'rama-space.module))]
+         (shell "mkdir -p classes")
+         (shell (str "clj -M -e \"" (str command) "\"")))}
+
+  repl {:doc "Start a dev repl"
+        :depends [aot]
+        :task (shell "clj -A:dev -M:repl/conjure")}
+
+  test {:doc "Run the tests"
+        :depends [aot]
+        :task (shell "clj -A:test")}
+
+  clean {:doc "Clean up the project"
+         :task (do
+                 (shell "rm -rf .cpcache/ classes/"))}}}
