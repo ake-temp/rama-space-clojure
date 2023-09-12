@@ -2,7 +2,23 @@
 
 A pure clojure + rama implementation of the RamaSpace example from the [Tying it all together](https://redplanetlabs.com/docs/~/tutorial6.html) example provided by Red Planet Labs for [rama](https://redplanetlabs.com/learn-rama).
 
+## Running
+
+I've used [babashka](https://github.com/babashka/babashka) to write the scripts for this repo.
+
+To start a repl you can just run:
+```bash
+$ bb repl
+```
+
+To run the tests:
+```bash
+$ bb test
+```
+
 ## Notes
+
+You can find tests in test/rama_space/module_test.clj.
 
 I was able to use clojure maps and records without any extra configuration, even `.subSource` worked just fine.
 
